@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Confirmation</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
+    .message { font-size: 20px; }
+  </style>
+</head>
+<body>
+  <div class="message">
+    This Supreme Free Delivery Order has been Marked Completed! PLEASE CLOSE THIS TAB!
+  </div>
+
+<script>
+  function getQueryParam(param) {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  window.onload = function() {
+    var id = getQueryParam('id'); // Get the ID from the URL
+    var webhookUrl = "https://hooks.zapier.com/hooks/catch/2838517/32sk1c6/";
+    if (id) {
+      webhookUrl += "?id=" + id; // Append the ID to the webhook URL
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", webhookUrl, true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        // Successful request
+      }
+    };
+    xhr.send();
+  };
+</script>
+</body>
+</html>

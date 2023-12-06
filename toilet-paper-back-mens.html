@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toilet Paper Request Confirmation</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
+    .message { font-size: 20px; }
+  </style>
+</head>
+<body>
+  <div class="message">
+    Your Request for Toilet Paper has been received, if you need immediate assistance please call a coworker.
+  </div>
+
+  <script>
+    window.onload = function() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "YOUR_ZAPIER_WEBHOOK_URL", true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          // You can display a message or perform any other action upon successful request
+        }
+      };
+      xhr.send();
+    };
+  </script>
+</body>
+</html>
